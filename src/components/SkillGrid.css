@@ -1,0 +1,28 @@
+@keyframes opacity {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.word-cell {
+  animation: opacity 2s ease-in-out infinite alternate;
+}
+
+.word-cell.idle {
+  animation-play-state: paused;
+  opacity: 0.2 !important;
+}
+
+.word-cell:hover {
+  animation-play-state: paused;
+  opacity: 1 !important;
+  border: 1px solid #80808073;
+  border-radius: 500px;
+  transition: border 0.3s ease-in-out;
+}

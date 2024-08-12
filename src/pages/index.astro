@@ -1,5 +1,7 @@
 ---
-
+import '@/styles/globals.css'
+import { ArrowBottomRightIcon } from '@radix-ui/react-icons'
+import SkillsGrid from '@/components/SkillsGrid'
 ---
 
 <html lang="en">
@@ -11,6 +13,172 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+    <header class="flex justify-between items-center fixed w-dvw backdrop-blur-sm z-20">
+      <div class="flex gap-6 items-center p-2">
+        <p class="text-lg font-bold">
+          Julian<span class="text-muted-foreground">Castro</span>
+        </p>
+        <a href="/blog" class="text-sm font-semibold bg-white py-3 px-8 rounded-full">
+          Blog
+        </a>
+        <a href="/photogrphy" class="text-sm font-semibold bg-white py-3 px-8 rounded-full">
+          PH
+        </a>
+      </div>
+      <div class="flex gap-4 items-center p-2  text-muted-foreground">
+        <a href="https://github.com/onedapperterm" target="_blank" class="text-sm">
+          LinkedIn
+        </a>
+        /
+        <a href="https://github.com/onedapperterm" target="_blank" class="text-sm">
+          GitHub
+        </a>
+        /
+        <a href="mailto: julian.castrol+web@protonmail.com" class="text-sm">
+          Email
+        </a>
+      </div>
+    </header>
+
+    <section class="px-16 rounded-b-[100px] w-dvw h-dvh flex items-center box-border bg-stone-100">
+      <div>
+        <h1 class="text-6xl font-bold">
+          Hi, I'm Julian, an Engineer  <br />
+          and photographer based in Hamburg.
+        </h1>
+        <p class="text-lg text-muted-foreground mt-2">
+          Currently working at <a href="https://www.binaroo.com" target="_blank" class="text-red-500">binaroo</a> as a Fullstack Developer.
+        </p>
+      </div>
+      <ArrowBottomRightIcon className="w-16 h-16 font-bold absolute right-2 bottom-4" />
+    </section>
+
+    <section class="rounded-b-[100px] box-border z-10 bg-white relative">
+      <h1 class="text-6xl text-left font-bold my-16 pl-16">
+        this is my favorite tech stack:
+      </h1>
+      <div class="slider h-[350px]">
+        <div class="slide-track real-track">
+          <div class="slide">
+            <img src="https://angular.dev/assets/images/press-kit/angular_wordmark_gradient.png" />
+          </div>
+          <div class="slide">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSqT1SJ2-10Nt4SfENScW41TuQBkqvHpApsNeBw6h44_KLbyCywu8NO_y_d4ug6bfLFPKM-z0groqAkCdzBy9oS1GTxpOI_IU0YEANjFETgemUnLKqTZnxAgqQtEJ3aWHEVfyxMmAK4fA/s1600/spring-boot-logo.png" />
+          </div>
+          <div class="slide">
+            <img src="https://seeklogo.com/images/J/java-logo-41D4155FC3-seeklogo.com.png" />
+          </div>
+          <div class="slide">
+            <img src="https://www.xpand-it.com/wp-content/uploads/2018/09/React-Logo.png" />
+          </div>
+          <div class="slide">
+            <img src="https://cdn.freebiesupply.com/logos/large/2x/docker-1-logo-svg-vector.svg" />
+          </div>
+          <div class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1280px-Python_logo_and_wordmark.svg.png" />
+          </div>
+          <div class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png" />
+          </div>
+        </div>
+        <div class="slide-track mirror-track">
+          <div class="slide">
+            <img src="https://angular.dev/assets/images/press-kit/angular_wordmark_gradient.png" />
+          </div>
+          <div class="slide">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSqT1SJ2-10Nt4SfENScW41TuQBkqvHpApsNeBw6h44_KLbyCywu8NO_y_d4ug6bfLFPKM-z0groqAkCdzBy9oS1GTxpOI_IU0YEANjFETgemUnLKqTZnxAgqQtEJ3aWHEVfyxMmAK4fA/s1600/spring-boot-logo.png" />
+          </div>
+          <div class="slide">
+            <img src="https://seeklogo.com/images/J/java-logo-41D4155FC3-seeklogo.com.png" />
+          </div>
+          <div class="slide">
+            <img src="https://www.xpand-it.com/wp-content/uploads/2018/09/React-Logo.png" />
+          </div>
+          <div class="slide">
+            <img src="https://cdn.freebiesupply.com/logos/large/2x/docker-1-logo-svg-vector.svg" />
+          </div>
+          <div class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1280px-Python_logo_and_wordmark.svg.png" />
+          </div>
+          <div class="slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png" />
+          </div>
+      </div>
+    </section>
+
+    <section class="box-border bg-stone-100 mt-[-200px]">
+      <h1 class="text-6xl text-left font-bold my-16 pl-16 pt-[200px] pb-14">
+        but i also have experience with those technologies and tools:
+      </h1>
+
+      <SkillsGrid client:load></SkillsGrid>
+
+    </section>
 	</body>
+
+  <style>
+
+  body {
+    --slider-track-width: 100vw;
+    --slides: 7;
+  }
+
+  @keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+  }
+
+  @keyframes scroll-mirror {
+  0% {
+    transform: translate(100%, -100%);
+  }
+  50% {
+    transform: translate(0, -100%);
+  }
+  100% {
+    transform: translate(-100%, -100%);
+  }
+  }
+
+  .slider {
+    overflow: hidden;
+    width: 100vw;
+  }
+
+  .slide-track {
+    display: grid;
+    grid-template-columns: repeat(var(--slides), 1fr);
+    width: 100vw;
+  }
+
+  .real-track {
+    animation: scroll 40s linear infinite;
+    animation-delay: -20s;
+  }
+
+  .mirror-track {
+    animation: scroll-mirror 40s linear infinite;
+  }
+
+  .slide {
+    padding: 2rem;
+    filter: brightness(0);
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .slide > img {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  </style>
 </html>
