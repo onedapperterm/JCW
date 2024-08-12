@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import './SkillGrid.css';
+import { Input } from "@/components/ui/input"
+import { Button } from './ui/button';
+import { Cross1Icon } from '@radix-ui/react-icons';
 
 const SKILLS: string[] = [
   'Java',
@@ -48,7 +51,7 @@ const SKILLS: string[] = [
 ]
 
 export interface WordCell {
-  chars: string[];
+  word: string;
   wordIndex: number;
   size: number;
   delay: number;
@@ -126,7 +129,7 @@ const SkillsGrid = () => {
     return line.map(word => {
       wordCount++;
       return {
-        chars: word.split(''),
+        word: word,
         wordIndex: wordCount,
         size: word.length,
         delay: wordCount * 0.1,
@@ -135,16 +138,44 @@ const SkillsGrid = () => {
     });
   });
 
-  const containerStyle = {
-    display: 'grid',
-    gridTemplateColumns: `repeat(${columns}, 1fr)`,
-    gridTemplateRows: `repeat(${rows}, 1fr)`,
+  const [ foundedIds, setFoundedIds ] = useState<number[]>([]);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    if (!value || value.trim().length < 2){
+      setFoundedIds([]);
+      return;
+    }
+
+    const regex = new RegExp(value, 'i');
+
+    const foundedWords: WordCell[] = words.flat().filter(word => regex.test(word.word));
+
+    if (foundedWords.length > 0) {
+      setFoundedIds(foundedWords.map(word => word.wordIndex));
+    } else {
+      setFoundedIds([]);
+    }
+  }
+
+  const clearSearch = () => {
+    if(searchInputRef.current) searchInputRef.current.value = '';
+    setFoundedIds([]);
   }
 
   return (
-    <>
-    <div className="flex items-center justify-center pb-16">
-      <div style={containerStyle} className="w-[80vw]">
+    <div className="flex flex-col items-center justify-center pb-12">
+      <div className="w-[80vw] mb-4 flex items-center justify-around gap-2">
+        <Input type="text" placeholder="Seach for one ;)" onChange={onSearch} ref={searchInputRef} />
+        {foundedIds.length > 0 &&  <Button variant="ghost" size="icon" className="absolute right-[10vw]" onClick={clearSearch}><Cross1Icon className="h-4 w-4" /></Button>}
+      </div>
+      <div style={{
+          gridTemplateColumns: `repeat(${columns}, 1fr)`,
+          gridTemplateRows: `repeat(${rows}, 1fr)`,
+        }}
+        className="w-[80vw] grid">
         {words.map(line => {
           let offset = 0;
           return line.map(wordCell => {
@@ -159,16 +190,20 @@ const SkillsGrid = () => {
                   gridColumn: `${1 + offset - wordCell.size} / span ${wordCell.size}`,
                   gridTemplateColumns: `repeat(${wordCell.size}, 1fr)`
                 }} 
-                className={`uppercase text-2xl h-12 grid ${hovered !== null && hovered !== wordCell.wordIndex ? 'idle' : ''} ${wordCell.empty ? '' : 'word-cell'}`}
+                className={`
+                  uppercase text-2xl h-12 grid 
+                  ${(hovered !== null && hovered !== wordCell.wordIndex) || foundedIds.length ? 'idle' : ''} 
+                  ${foundedIds.includes(wordCell.wordIndex) ? 'founded' : ''} 
+                  ${wordCell.empty ? '' : 'word-cell'}
+                `}
               >
-                    {wordCell.chars.map((char, i)=> (<div key={i} className="flex items-center justify-center">{char}</div>))}
+                    {wordCell.word.split('').map((char, i)=> (<div key={i} className="flex items-center justify-center">{char}</div>))}
               </div>
             )
           })
         })}
       </div>
     </div>
-    </>
   );
 };
 

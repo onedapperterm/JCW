@@ -19,6 +19,22 @@
   opacity: 0.2 !important;
 }
 
+.word-cell.founded {
+  animation-play-state: paused;
+  opacity: 1 !important;
+  border: 1px dashed #80808073;
+  border-radius: 500px;
+  transition: border 0.3s ease-in-out;
+}
+
+.word-cell.founded.idle {
+  animation-play-state: paused;
+  opacity: 0.8 !important;
+  border: 1px dashed #80808073;
+  border-radius: 500px;
+  transition: border 0.3s ease-in-out;
+}
+
 .word-cell:hover {
   animation-play-state: paused;
   opacity: 1 !important;
