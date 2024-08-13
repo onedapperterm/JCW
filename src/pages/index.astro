@@ -1,6 +1,5 @@
 ---
 import '@/styles/globals.css'
-import { ArrowBottomRightIcon } from '@radix-ui/react-icons'
 import SkillsGrid from '@/components/SkillsGrid'
 ---
 
@@ -13,7 +12,7 @@ import SkillsGrid from '@/components/SkillsGrid'
 		<title>Astro</title>
 	</head>
 	<body>
-    <header class="flex justify-between items-center fixed w-dvw backdrop-blur-sm z-20">
+    <header class="flex justify-between items-center fixed w-dvw backdrop-blur-sm z-50 px-8">
       <div class="flex gap-6 items-center p-2">
         <p class="text-lg font-bold">
           Julian<span class="text-muted-foreground">Castro</span>
@@ -26,36 +25,61 @@ import SkillsGrid from '@/components/SkillsGrid'
         </a>
       </div>
       <div class="flex gap-4 items-center p-2  text-muted-foreground">
-        <a href="https://github.com/onedapperterm" target="_blank" class="text-sm">
+        <a href="https://www.linkedin.com/in/julian-castro-lopez-99218b2b5/" target="_blank" class="text-sm">
           LinkedIn
         </a>
-        /
+        <span class="h-[30px] w-[1px] bg-gray-300"></span>
         <a href="https://github.com/onedapperterm" target="_blank" class="text-sm">
           GitHub
         </a>
-        /
+        <span class="h-[30px] w-[1px] bg-gray-300"></span>
         <a href="mailto: julian.castrol+web@protonmail.com" class="text-sm">
           Email
         </a>
       </div>
     </header>
 
-    <section class="px-16 rounded-b-[100px] w-dvw h-dvh flex items-center box-border bg-stone-100">
+    <nav class="navi backdrop-blur-sm">
+      <ul class="flex flex-col items-center justify-evenly h-full uppercase font-thin tracking-widest text-muted-foreground">
+        <li class="rotate-[-90deg]">
+          <a href="#start" class="nav-link">
+            Start
+          </a>
+        </li>
+        <li class="rotate-[-90deg]">
+          <a href="#skills" class="nav-link">
+            Skills
+          </a>
+        </li>
+        <li class="rotate-[-90deg]">
+          <a href="#experience" class="nav-link">
+            Experience
+          </a>
+        </li>
+        <li class="rotate-[-90deg]">
+          <a href="#education" class="nav-link">
+            Education
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="section px-16 rounded-br-[100px] w-dvw h-dvh flex items-center box-border bg-stone-100 main-section" id="start">
       <div>
         <h1 class="text-6xl font-bold">
           Hi, I'm Julian, an Engineer  <br />
           and photographer based in Hamburg.
         </h1>
         <p class="text-lg text-muted-foreground mt-2">
-          Currently working at <a href="https://www.binaroo.com" target="_blank" class="text-red-500">binaroo</a> as a Fullstack Developer.
+          Currently working at <a href="https://www.binaroo.com" target="_blank" class="text-black font-bold hover:text-red-500">binaroo</a> as a Fullstack Developer.
         </p>
       </div>
-      <ArrowBottomRightIcon className="w-16 h-16 font-bold absolute right-2 bottom-4" />
     </section>
 
-    <section class="rounded-b-[100px] box-border z-10 bg-white relative">
+    <section class="rounded-br-[100px] box-border z-10 bg-white relative">
+      <div class="section scroll-anchor" id="skills"></div>
       <h1 class="text-6xl text-left font-bold my-16 pl-16">
-        this is my favorite tech stack:
+        I'm proficient in these technologies:
       </h1>
       <div class="slider h-[350px]">
         <div class="slide-track real-track">
@@ -106,17 +130,133 @@ import SkillsGrid from '@/components/SkillsGrid'
       </div>
     </section>
 
-    <section class="box-border bg-stone-100 mt-[-200px]">
+    <section class="box-border bg-stone-100 mt-[-200px] z-10 pb-[200px]">
       <h1 class="text-6xl text-left font-bold mt-16 pl-16 pt-[200px] pb-16">
         but i also have experience with those technologies and tools:
       </h1>
 
       <SkillsGrid client:load></SkillsGrid>
+    </section>
+
+    <section class="section rounded-tr-[100px] box-border bg-white mt-[-200px] z-20 pb-[200px]" id="experience">
+      <h1 class="text-6xl text-left font-bold mt-16 pl-16 pt-20 pb-16">
+        Brief overview of my experience
+      </h1>
+
+      <div class="grid grid-cols-2 gap-6 box-border px-20">
+        <div>
+          <h2 class="text-2xl font-bold mb-2">Frontend Development (5 years)</h2>
+          <p class="text-muted-foreground">My journey in frontend development began in 2020, coinciding with the start of the COVID-19 pandemic. Initially, I freelanced on projects for a research group at my university in Colombia. Soon after, I transitioned to a Trainee position at an IT company in Germany. Currently, I work as a Fullstack Developer, leveraging my frontend expertise alongside backend skills.</p>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold">Backend Development (+2 years)</h2>
+          <p class="text-muted-foreground">My backend journey began academically with Java during my university years. Professionally, I started in 2022 as part of my IT specialist training. Since then, I've focused on Java with Spring Boot framework and various Python frameworks, primarily working on microservices architectures for backend systems.</p>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold">A.I.</h2>
+          <p class="text-muted-foreground">In my current role within e-commerce projects, I've progressively integrated AI-related features. My journey began with implementing simple chatbots using pre-trained models, which involved fine-tuning and creating data pipelines. As my expertise grew, I advanced to developing more sophisticated assistants based on open-source Large Language Models (LLMs).</p>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold">Project Managemet</h2>
+          <p class="text-muted-foreground">My experience in team-based project work spans both industrial and software domains. Initially, I worked as an industrial project engineer in Colombia, which laid a strong foundation in project management principles. Transitioning to software development, I seamlessly adapted to agile methodologies, leveraging tools like Jira and Confluence to enhance team collaboration and project efficiency.</p>
+        </div>
+
+        <div class="text-muted-foreground col-span-2 text-center mt-8">
+          If you want to know more about my experience, feel free to contact me via 
+          <span><a href="mailto: julian.castrol+web@protonmail.com" class="text-black font-bold">Email</a></span> or
+          <span><a href="https://www.linkedin.com/in/julian-castro-lopez-99218b2b5/" target="_blank"  class="text-black font-bold">LinkedIn</a></span>
+        </div>
+      </div>
+    </section>
+
+
+    <section  class="section box-border rounded-tr-[100px] bg-stone-100 mt-[-200px] z-10 pb-[200px]" id="education">
+      <h1 class="text-6xl text-left font-bold mt-16 pl-16 pt-20 pb-16">
+        Educational background
+      </h1>
+
+      <div class="grid grid-cols-2 gap-6 box-border px-20">
+        <div class="flex flex-col items-center justify-center">
+          <a href="https://unal.edu.co/" target="_blank">
+            <img 
+              src="https://unal.edu.co/_assets/ca8e1ca9a551c3e3ffc233b30e54ba93/images/escudoUnal.svg" alt="BS14"
+              class="h-[120px] object-contain object-left brightness-0"
+            >
+          </a>
+          <h2 class="text-2xl font-bold mb-2">B.Sc. in Industrial Engineering (2017)</h2>
+          <h3 class="text-lg font-bold">National University of Colombia, Colombia</h3>
+        </div>
+        <div  class="flex flex-col items-center justify-center">
+          <a class="flex items-center gap-2 grayscale hover:grayscale-0" href="https://www.itech-bs14.de/" target="_blank">
+            <img 
+              src="https://www.itech-bs14.de/wp-content/themes/itech-bs14/img/logo-colored-icons.png" alt="BS14"
+              class="h-[60px] object-contain object-center"
+            >
+            <img 
+              src="https://www.itech-bs14.de/wp-content/themes/itech-bs14/img/logo-colored-text.png" alt="BS14"
+              class="h-[100px] object-contain object-left"
+            >
+            <img 
+              src="https://www.itech-bs14.de/wp-content/themes/itech-bs14/img/logo-white-text-ds2023.png" alt="BS14"
+              class="w-[55px] h-[100px] object-cover object-right"
+            >
+          </a>
+          <h2 class="text-2xl font-bold">IT Specialist (2024)</h2>
+          <h3 class="text-lg font-bold">I-TECH BS14, Germany</h3>
+        </div>
+      </div>
 
     </section>
+
+    <footer class="flex justify-center items-center h-[100px] bg-stone-200 rounded-tr-[100px] mt-[-100px] z-50 relative">
+      <p class="text-sm">
+        © 2024 Julian Castro. All rights reserved.
+      </p>
+    </footer>
 	</body>
 
   <style>
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  header {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .navi {
+    z-index: 49;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 40px;
+    height: calc(100dvh - 60px);
+    border-right: 1px solid #ddd;
+  }
+
+  .scroll-anchor {
+    position: absolute;
+    top: -60px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main-section {
+    animation: sqeeze 1s 1;
+  }
+
+  @keyframes sqeeze {
+    0% {
+      height: 100vh;
+    }
+    50% {
+      height: 95vh;
+    }
+    100% {
+      height: 100vh;
+    }
+  }
 
   body {
     --slider-track-width: 100vw;
@@ -180,5 +320,53 @@ import SkillsGrid from '@/components/SkillsGrid'
     object-position: center;
   }
 
+  .active-link {
+    color: black !important;
+    font-weight: normal;
+  }
+
+  .idle-link {
+    color: var(--muted-foreground) !important;
+    opacity: 0.5;
+  }
+
   </style>
+
+  <script lang="js" is:inline>
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.8
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeId = entry.target.id;
+          navLinks.forEach(link => {
+            if (link.getAttribute('href') === `#${activeId}`) {
+              link.classList.add('active-link');
+              link.classList.remove('idle-link');
+            } else {
+              link.classList.remove('active-link');
+              link.classList.add('idle-link');
+            }
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+
+  </script>
 </html>
