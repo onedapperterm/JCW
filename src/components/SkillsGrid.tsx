@@ -167,15 +167,15 @@ const SkillsGrid = () => {
 
   return (
     <div className="flex flex-col items-center justify-center pb-12">
-      <div className="w-[80vw] mb-4 flex items-center justify-around gap-2">
+      <div className="w-[70vw] md:w-[80vw] mb-4 flex items-center justify-around gap-2">
         <Input type="text" placeholder="Seach for one ;)" onChange={onSearch} ref={searchInputRef} />
-        {foundedIds.length > 0 &&  <Button variant="ghost" size="icon" className="absolute right-[10vw]" onClick={clearSearch}><Cross1Icon className="h-4 w-4" /></Button>}
+        {foundedIds.length > 0 &&  <Button variant="ghost" size="icon" className="absolute right-[15vw] md:right-[10vw]" onClick={clearSearch}><Cross1Icon className="h-4 w-4" /></Button>}
       </div>
       <div style={{
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
           gridTemplateRows: `repeat(${rows}, 1fr)`,
         }}
-        className="w-[80vw] grid">
+        className="w-[75vw] md:w-[80vw] grid">
         {words.map(line => {
           let offset = 0;
           return line.map(wordCell => {
@@ -191,7 +191,7 @@ const SkillsGrid = () => {
                   gridTemplateColumns: `repeat(${wordCell.size}, 1fr)`
                 }} 
                 className={`
-                  uppercase text-2xl h-12 grid 
+                  uppercase grid text-xs h-6 md:text-2xl md:h-12 
                   ${(hovered !== null && hovered !== wordCell.wordIndex) || foundedIds.length ? 'idle' : ''} 
                   ${foundedIds.includes(wordCell.wordIndex) ? 'founded' : ''} 
                   ${wordCell.empty ? '' : 'word-cell'}
